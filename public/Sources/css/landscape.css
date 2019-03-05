@@ -8,7 +8,8 @@
 }
 
 .flex-two{
-    width: 40%;
+    width: 100%;
+    height: 100%;
 }
 
 .tablet{
@@ -22,7 +23,7 @@
         display: none
     }
     .flex-two {
-       
+        width: 40%;
         flex:none; 
     }
 

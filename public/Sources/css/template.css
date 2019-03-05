@@ -396,7 +396,7 @@ overflow: hidden;
 
     .favorite-tab, .messages-tab, .profile-tab{
     flex-grow: 1;
-    background-color: var(--quattro);
+    background-color: var(--white);
     display: flex;
     justify-content: center;
     align-content: center;
