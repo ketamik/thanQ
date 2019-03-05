@@ -36,7 +36,6 @@
                                 <button onclick = 'loginJs()' class="background-two button">
                                                 <h4>Login</h4>
                                 </button>
-
                         </div>
                       </div>
 
@@ -55,49 +54,27 @@
   };
   firebase.initializeApp(config);
 </script>
-
-        <script>
-
+  <script>
     function loginJs(){
-
-        var email = document.getElementById('name').value
-        var password = document.getElementById('password').value
+      var email = document.getElementById('name').value
+      var password = document.getElementById('password').value
       console.log(email,password)
-
-       firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  // ...
-});
-
-firebase.auth().onAuthStateChanged(function(user){
-  console.log(user)
-if (user) {
-  alert("sei entrato")
-  console.log("entrato")
-  // User is signed in.
-} else {
-  console.log("non entrato")
-  // No user is signed in.
-}
-})
-
-        
-
+      firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      });
+      firebase.auth().onAuthStateChanged(function(user){
+        console.log(user)
+        if (user) {
+          location.href = '/landscape.html'
+          // User is signed in.
+        } else {
+          console.log("non entrato")
+          // No user is signed in.
+        }
+      })
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     </script>
 </body>
