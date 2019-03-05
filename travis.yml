@@ -7,3 +7,5 @@ before_script:
 
 script:
     - firebase deploy --token "1/oLHu4y4sSoC1JqCMliWZZnQsiuzxe8ZJdoOy0t_0M34"
+
+project: "thanqprova"
