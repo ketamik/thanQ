@@ -549,7 +549,7 @@ overflow: hidden;
 
 }
 
-input[type="text"], input[type="password"], select {
+input[type="email"], input[type="password"], select {
   font-family: 'Gill Sans';
   background: rgba(255,255,255,0.1);
   border: none;
