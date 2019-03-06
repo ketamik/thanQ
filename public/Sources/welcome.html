@@ -11,20 +11,21 @@
         <link rel="stylesheet" href="css/welcome.css">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
 </head>
-<body >
+<body onload = "startTimer()">
+        <img id="img" src=""/>
         <div class="background"style="background-image: url('sources/koala.jpg');" >
 
             
                 <div class="welcome-box">    
                         <div class="logo"> 
-                                        <h1>ThanQ</h1>
+                                <h1>ThanQ</h1>
                                 
                        </div>
                                       
                         <div>
 
                                 <a href="login.html"> <button class="background-two button">
-                                                <h4>Welcome</h4>
+                                        <h4>Welcome</h4>
                                 </button>
                                 </a>
 
@@ -42,6 +43,29 @@
                 </div>
 
         </div>    
-    
+    <script>
+            function displayNextImage() {
+
+                if(index === images.length-1){           // se l'indice è arrivato al suo valor massimo
+                index = 0;                              // torna al valore 1
+                } else {                                // altrimenti
+                index++;                                // aumenta di uno
+                }
+
+                document.getElementById("img").src = images[index];     // cambia l'immagine con l'indice index
+                }
+
+                function startTimer() {
+                setInterval(displayNextImage, 3000);        // chiama la funzione displayNextImage ogni 3 secondi
+                }
+
+                var images = [];    // array immagini
+                var index = -1;     // indice dell'immagine che verrà visualizzata
+
+                // popola l'array con le tre immagini contenute nella cartella images
+                images[0] = "sources/background0.jpg";
+                images[1] = "sources/background1.jpg";
+                images[2] = "sources/background2.jpg";
+    </script>
 </body>
 </html>
