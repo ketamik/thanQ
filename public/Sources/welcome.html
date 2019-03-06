@@ -45,8 +45,8 @@
                 index++;                                // aumenta di uno
                 }
 
-                document.getElementById("img").style.background-Image = images[index];     // cambia l'immagine con l'indice index
-                }
+                document.getElementById("img").style.backgroundImage = 'url("'+images[index]+'")';    
+                              }
 
                 function startTimer() {
                 setInterval(displayNextImage, 3000);        // chiama la funzione displayNextImage ogni 3 secondi
