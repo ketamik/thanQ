@@ -1,78 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Login</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="sources/logo.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css">
-        <link rel="stylesheet" href="css/template.css">
-        <link rel="stylesheet" href="css/login.css">
-        <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="sources/logo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.css">
+<link rel="stylesheet" href="css/template.css">
+<link rel="stylesheet" href="css/login.css">
+<script
+src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+crossorigin="anonymous"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
-<body >     
-        <div class="login-form"style="background-image: url('sources/koala.jpg');">
+<body onload="startTimer()">     
+<div id="img" class="login-form" style="background-image: url('sources/koala.jpg');">
 
-                <span class="css-label" style="margin-bottom: 20px; color: white">
-                        <h3>Sign in</h3>
-                </span>
+<span class="css-label" style="margin-bottom: 20px; color: white">
+<h3>Sign in</h3>
+</span>
 
-                <input type="email" id="name" placeholder="Username">
-                <input type="password" id="password" placeholder="Password">
-                  
-                        
-                        <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox"/>
-                        <label for="checkboxG1" class="css-label"><h3>Remember Me </h3></label>           
-                        <div>
-
-                                <button onclick = 'loginJs()' class="background-two button">
-                                                <h4>Login</h4>
-                                </button>
-                        </div>
-                      </div>
+<input type="email" id="name" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
 
 
- <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
- <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+<input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox"/>
+<label for="checkboxG1" class="css-label"><h3>Remember Me </h3></label>           
+<div>
+
+<button onclick = 'loginJs()' class="background-two button">
+<h4>Login</h4>
+</button>
+</div>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+<script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
 <script>
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAC43_IrEvX7nGCCIExo2q6RRooaVDhwHA",
-    authDomain: "thanqprova.firebaseapp.com",
-    databaseURL: "https://thanqprova.firebaseio.com",
-    projectId: "thanqprova",
-    storageBucket: "thanqprova.appspot.com",
-    messagingSenderId: "868158723106"
-  };
-  firebase.initializeApp(config);
+var config = {
+  apiKey: "AIzaSyAC43_IrEvX7nGCCIExo2q6RRooaVDhwHA",
+  authDomain: "thanqprova.firebaseapp.com",
+  databaseURL: "https://thanqprova.firebaseio.com",
+  projectId: "thanqprova",
+  storageBucket: "thanqprova.appspot.com",
+  messagingSenderId: "868158723106"
+};
+firebase.initializeApp(config);
 </script>
-  <script>
-    function loginJs(){
-      var email = document.getElementById('name').value
-      var password = document.getElementById('password').value
-      console.log(email,password)
-      firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      });
-      firebase.auth().onAuthStateChanged(function(user){
-        console.log(user)
-        if (user) {
-          location.href = '/landscape.html'
-          // User is signed in.
-        } else {
-          console.log("non entrato")
-          // No user is signed in.
-        }
-      })
+<script>
+function loginJs(){
+  var email = document.getElementById('name').value
+  var password = document.getElementById('password').value
+  console.log(email,password)
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  });
+  firebase.auth().onAuthStateChanged(function(user){
+    console.log(user)
+    if (user) {
+      location.href = '/landscape.html'
+      // User is signed in.
+    } else {
+      console.log("non entrato")
+      // No user is signed in.
     }
-    
-    </script>
+  })
+}
+
+</script>
+
+<script>
+function displayNextImage() {
+    if(index === images.length-1){           // se l'indice è arrivato al suo valor massimo
+      index = 0;                              // torna al valore 1
+    } else {                                // altrimenti
+      index++;                                // aumenta di uno
+    }
+    document.getElementById("img").style.backgroundImage = 'url("'+images[index]+'")';
+}
+
+function startTimer() {
+setInterval(displayNextImage, 3000);        // chiama la funzione displayNextImage ogni 3 secondi
+}
+
+var images = [];    // array immagini
+var index = -1;     // indice dell'immagine che verrà visualizzata
+
+// popola l'array con le tre immagini contenute nella cartella images
+images[0] = "sources/background0.jpg";
+images[1] = "sources/background1.jpg";
+images[2] = "sources/background2.jpg";
+</script>
 </body>
 </html>
